@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    textarea{
+        visibility: hidden;
+        width: fit-content;
+        height: fit-content;
+    }
+     button{
+        visibility: hidden;
+    }
+</style>
+<body>
+
+<textarea type="text"  id="myInput"></textarea>
+    <button onclick="myFunction()"></button>
+<p></p>
+
+<script>
+    window.addEventListener('load', ()=>{
+        document.querySelector("button").click()
+    })
+    
+document.addEventListener('click', function(event) {
+   myFunction()
+});
+    
+document.getElementById("myInput").value = `
+9: Complex Numbers
+using System;
+public struct Complex
+{
+public int real;
+public int imaginary;
+public Complex(int real, int imaginary)
+{
+this.real = real;
+this.imaginary = imaginary;
+}
+public static Complex operator +(Complex one, Complex two)
+{
+return new Complex(one.real + two.real, one.imaginary + two.imaginary);
+}
+public override string ToString()
+{
+return (String.Format("{0} + {1}i", real, imaginary));
+}
+}
+public class VtuCode
+{
+public static void Main(string [] args)
+{
+Complex val1 = new Complex(7, 1);
+Complex val2 = new Complex(2, 6);
+Complex res = val1 + val2;
+System.Console.WriteLine("First: {0}", val1);
+System.Console.WriteLine("Second: {0}", val2);
+System.Console.WriteLine("Result (Sum): {0}", res);
+System.Console.ReadLine();
+}
+}
+Output:
+First: 7 + 1i
+Second: 2 + 6i
+Result (Sum): 9 + 7i
+`
+
+function myFunction() {
+  
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+console.log(copyText.value)
+}
+</script>
+
+</body>
+</html>
